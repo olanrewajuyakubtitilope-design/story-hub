@@ -322,3 +322,114 @@ footer{
 .read-btn:hover{
     background:#4338ca;
 }
+.story-banner{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.story-banner img{
+    width:320px;
+    border-radius:15px;
+}
+
+.banner-info{
+    flex:1;
+}
+
+.banner-info h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.author{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.story-stats{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.story-actions button{
+    padding:12px 20px;
+    margin-right:10px;
+    border:none;
+    border-radius:8px;
+    background:#4f46e5;
+    color:white;
+    cursor:pointer;
+}
+
+.story-reading{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.story-reading p{
+    margin:25px 0;
+    line-height:1.9;
+    font-size:18px;
+}
+
+.chapter-buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:40px;
+}
+
+.chapter-buttons button{
+    padding:12px 25px;
+    border:none;
+    background:#4f46e5;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.comments{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+}
+
+.comment{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.comment h4{
+    margin-bottom:10px;
+}
+
+.comment-form textarea{
+    width:100%;
+    height:120px;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.comment-form button{
+    padding:12px 25px;
+    border:none;
+    background:#4f46e5;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
