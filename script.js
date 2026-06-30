@@ -1,89 +1,102 @@
-// ===============================
-// Story Hub JavaScript
-// ===============================
+// ================================
+// STORY HUB
+// ================================
 
-// Like Button
-const likeButtons = document.querySelectorAll(".like-btn");
+// Get stories
+function getStories() {
+    return JSON.parse(localStorage.getItem("stories")) || [];
+}
 
-likeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+// Save stories
+function saveStories(stories) {
+    localStorage.setItem("stories", JSON.stringify(stories));
+}
 
-        let likes = Number(button.dataset.likes || 0);
+// ================================
+// Publish Story
+// ================================
 
-        likes++;
+const publishForm = document.querySelector(".publish-form");
 
-        button.dataset.likes = likes;
+if (publishForm) {
 
-        button.innerHTML = `❤️ ${likes}`;
-    });
-});
-
-// Bookmark Button
-const bookmarkButtons = document.querySelectorAll(".bookmark-btn");
-
-bookmarkButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-        button.classList.toggle("saved");
-
-        if(button.classList.contains("saved")){
-            button.innerHTML = "🔖 Saved";
-        }else{
-            button.innerHTML = "🔖 Bookmark";
-        }
-
-    });
-
-});
-
-// Comment System
-const commentForm = document.querySelector(".comment-form");
-
-if(commentForm){
-
-    commentForm.addEventListener("submit", function(e){
+    publishForm.addEventListener("submit", function (e) {
 
         e.preventDefault();
 
-        const textarea = this.querySelector("textarea");
+        const title = publishForm.querySelector("input[type=text]").value;
 
-        if(textarea.value.trim() === "") return;
+        const genre = publishForm.querySelector("select").value;
 
-        const comments = document.querySelector(".comments");
+        const description =
+            publishForm.querySelector("textarea").value;
 
-        const div = document.createElement("div");
+        const stories = getStories();
 
-        div.className = "comment";
+        stories.push({
+            id: Date.now(),
+            title,
+            genre,
+            description,
+            views: 0,
+            likes: 0
+        });
 
-        div.innerHTML = `
-            <h4>You</h4>
-            <p>${textarea.value}</p>
-        `;
+        saveStories(stories);
 
-        comments.insertBefore(div, commentForm);
+        alert("Story Published!");
 
-        textarea.value = "";
+        publishForm.reset();
 
     });
 
 }
-function shareStory(){
 
-    if(navigator.share){
+// ================================
+// Load Stories
+// ================================
 
-        navigator.share({
-            title:"Story Hub",
-            text:"Check out this amazing story!",
-            url:window.location.href
-        });
+const storyGrid = document.querySelector(".story-grid");
 
-    }else{
+if (storyGrid) {
 
-        navigator.clipboard.writeText(window.location.href);
+    const stories = getStories();
 
-        alert("Story link copied!");
+    storyGrid.innerHTML = "";
 
-    }
+    stories.forEach(story => {
 
+        storyGrid.innerHTML += `
+
+        <div class="story-card">
+
+            <div class="story-content">
+
+                <span class="genre">${story.genre}</span>
+
+                <h2>${story.title}</h2>
+
+                <p>${story.description}</p>
+
+                <div class="story-info">
+
+                    <span>👁 ${story.views}</span>
+
+                    <span>❤️ ${story.likes}</span>
+
+                </div>
+
+                <a href="story.html" class="read-btn">
+                    Read Story
+                </a>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
 }
