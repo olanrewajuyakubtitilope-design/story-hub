@@ -12,109 +12,70 @@ function saveStories(stories) {
     localStorage.setItem("stories", JSON.stringify(stories));
 }
 
-// ================================
 // Publish Story
-// ================================
-
 const publishForm = document.querySelector(".publish-form");
 
 if (publishForm) {
-
     publishForm.addEventListener("submit", function (e) {
-
         e.preventDefault();
 
-        const title = publishForm.querySelector("input[type=text]").value;
-
+        const title = publishForm.querySelector('input[type="text"]').value;
         const genre = publishForm.querySelector("select").value;
-
-        const description =
-            publishForm.querySelector("textarea").value;
+        const description = publishForm.querySelector("textarea").value;
 
         const stories = getStories();
 
         stories.push({
             id: Date.now(),
-            title,
-            genre,
-            description,
+            title: title,
+            genre: genre,
+            description: description,
             views: 0,
             likes: 0
         });
 
         saveStories(stories);
 
-        alert("Story Published!");
+        alert("✅ Story published successfully!");
 
         publishForm.reset();
-
     });
-
 }
 
-// ================================
 // Load Stories
-// ================================
-
 const storyGrid = document.querySelector(".story-grid");
 
 if (storyGrid) {
 
     const stories = getStories();
 
-    storyGrid.innerHTML = "";
-
-    stories.forEach(story => {
+    stories.forEach(function(story){
 
         storyGrid.innerHTML += `
+            <div class="story-card">
 
-        <div class="story-card">
+                <div class="story-content">
 
-            <div class="story-content">
+                    <span class="genre">${story.genre}</span>
 
-                <span class="genre">${story.genre}</span>
+                    <h2>${story.title}</h2>
 
-                <h2>${story.title}</h2>
+                    <p>${story.description}</p>
 
-                <p>${story.description}</p>
+                    <div class="story-info">
+                        <span>👁 ${story.views}</span>
+                        <span>❤️ ${story.likes}</span>
+                    </div>
 
-                <div class="story-info">
-
-                    <span>👁 ${story.views}</span>
-
-                    <span>❤️ ${story.likes}</span>
+                    <a href="story.html" class="read-btn">
+                        Read Story
+                    </a>
 
                 </div>
 
-                <a href="story.html" class="read-btn">
-                    Read Story
-                </a>
-
             </div>
-
-        </div>
-
         `;
 
     });
-
-/ Save a story
-const publishForm = document.querySelector(".publish-form");
-
-if (publishForm) {
-    publishForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const title = document.querySelector('input[type="text"]').value;
-        const genre = document.querySelector("select").value;
-        const description = document.querySelector("textarea").value;
-
-        const stories = JSON.parse(localStorage.getItem("stories")) || [];
-
-        stories.push({
-            title: title,
-            genre: genre,
-            description: description
-        });
 
 }
