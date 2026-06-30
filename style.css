@@ -433,3 +433,6 @@ footer{
     border-radius:8px;
     cursor:pointer;
 }
+.saved{
+    background:#16a34a !important;
+}
