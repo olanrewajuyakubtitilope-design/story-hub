@@ -68,3 +68,22 @@ if(commentForm){
     });
 
 }
+function shareStory(){
+
+    if(navigator.share){
+
+        navigator.share({
+            title:"Story Hub",
+            text:"Check out this amazing story!",
+            url:window.location.href
+        });
+
+    }else{
+
+        navigator.clipboard.writeText(window.location.href);
+
+        alert("Story link copied!");
+
+    }
+
+}
