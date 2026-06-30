@@ -98,5 +98,23 @@ if (storyGrid) {
 
     });
 
-}
+/ Save a story
+const publishForm = document.querySelector(".publish-form");
+
+if (publishForm) {
+    publishForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const title = document.querySelector('input[type="text"]').value;
+        const genre = document.querySelector("select").value;
+        const description = document.querySelector("textarea").value;
+
+        const stories = JSON.parse(localStorage.getItem("stories")) || [];
+
+        stories.push({
+            title: title,
+            genre: genre,
+            description: description
+        });
+
 }
