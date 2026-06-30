@@ -151,3 +151,81 @@ footer{
     background:#222;
     color:white;
 }
+.publish-page{
+    width:90%;
+    max-width:900px;
+    margin:50px auto;
+}
+
+.publish-page h1{
+    text-align:center;
+    margin-bottom:10px;
+    font-size:40px;
+}
+
+.publish-page p{
+    text-align:center;
+    color:#666;
+    margin-bottom:35px;
+}
+
+.publish-form{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.publish-form label{
+    display:block;
+    margin-top:20px;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+.publish-form input,
+.publish-form select,
+.publish-form textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.publish-form textarea{
+    resize:vertical;
+}
+
+.publish-buttons{
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-top:30px;
+}
+
+.draft-btn{
+    background:#888;
+    color:white;
+    border:none;
+    padding:14px 24px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.publish-btn{
+    background:#4f46e5;
+    color:white;
+    border:none;
+    padding:14px 24px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.publish-btn:hover{
+    background:#4338ca;
+}
+
+.draft-btn:hover{
+    background:#666;
+}
